@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src = 'https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.js'></script>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+  
+</head>
+<body>
+    <div id = 'root'>
+    </div>
+    <script>
+const renderNames = () => {
+ let num = 20;
+ let arr = [];
+ while(num !== 0){
+    const card = faker.helpers.createCard();
+    const cardObject = {
+        name: card.name,
+        username: card.username
+    }
+    arr.push(cardObject);
+
+    num--;
+ }
+ return arr;
+   
+    // const card = faker.helpers.createCard();
+    //     console.log(card.name,card.username)
+}
+
+
+const namesRendered = renderNames();
+
+const root = document.querySelector('#root');
+
+class Favorites extends React.Component{
+    constructor(){
+        super();
+        this.state = {
+            names: namesRendered
+        }
+    }
+    render(){
+        const {names} = this.state;
+        const toggleClass = (ev) =>{
+            if(ev.target.className === notFavorite){
+                className = favorite;
+            }
+            else{
+                className = notFavorite;
+            }
+        }
+        const divs = names.map((name,idx) => React.createElement('div',
+    {key:idx, className: notFavorite,onClick: toggleClass}
+    ))
+    }
+    
+
+}
+
+
+
+
+    </script>
+</body>
+</html>
