@@ -43,22 +43,22 @@ class Favorites extends React.Component{
     }
     render(){
         const {names} = this.state;
-        const toggleClass = (ev) =>{
-            if(ev.target.className === notFavorite){
-                className = favorite;
-            }
-            else{
-                className = notFavorite;
-            }
-        }
-        const divs = names.map((name,idx) => React.createElement('div',
-    {key:idx, className: notFavorite,onClick: toggleClass}
-    ))
+        // const toggleClass = (ev) =>{
+        //     if(ev.target.className === notFavorite){
+        //         className = favorite;
+        //     }
+        //     else{
+        //         className = notFavorite;
+        //     }
+        // }
+        const divs = names.map((name,idx) => React.createElement('li',
+    {key:idx, className:'test' }, [name.username, name.name]
+    )) 
+        const stuff = React.createElement('ul', null, divs)
+        return stuff
     }
-    
-
 }
-
+ReactDOM.render(React.createElement(Favorites), root)
 
 
 
